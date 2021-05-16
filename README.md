@@ -81,3 +81,8 @@ composer install
 ```
 php artisan migrate
 ```
+6. Run the application
+```
+php artisan serve
+```
+7. THe application url: http://127.0.0.1:8000/
