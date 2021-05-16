@@ -26,7 +26,7 @@
         }
     </script>
 </head>
-<body class="h-100 d-flex flex-column  justify-content-start align-items-stretch">
+<body class="h-100">
 
         @include('menu')
         @yield('content')

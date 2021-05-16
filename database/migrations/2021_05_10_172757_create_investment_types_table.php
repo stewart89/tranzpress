@@ -15,7 +15,7 @@ class CreateInvestmentTypesTable extends Migration
     {
         Schema::create('investment_types', function (Blueprint $table) {
 
-            $table->increments('id')->unsigned();
+            $table->id();
             $table->string('name', 31)->comment('Befektetés típusa: Állampapír, Részvény, Kötvény, Valuta, Deviza, Ingatlan, Kriptotőzsde, Egyéb');
             $table->timestamps();
         });

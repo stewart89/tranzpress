@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Investment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -14,7 +15,15 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $investments = $this->getSummary();
+        $expectedIncome = $this->expectedIncome();
+
+        return view('dashboard', array_merge([
+            'investments' => $investments,
+            'totalCount' => Investment::count(),
+            'totalSum' => Investment::sum('amount'),
+            ], $expectedIncome)
+        );
     }
 
     /**
@@ -83,4 +92,22 @@ class DashboardController extends Controller
     {
         //
     }
+
+    private function getSummary(){
+
+        return Investment::select('*', DB::raw('COUNT(*) as count'), DB::raw('SUM(amount) as sum'))->with('type')->groupBy('type_id')->get();
+    }
+
+    private function expectedIncome(){
+
+        $expectedIncome = Investment::select('*', DB::raw('SUM(calculate_income(5, transaction_date, amount, currency, exchange_rate, anual_income)) as income'))
+                    ->with('type')->groupBy('type_id')->get();
+
+        $expectedIncomeSum = Investment::select(DB::raw('SUM(calculate_income(5, transaction_date, amount, currency, exchange_rate, anual_income)) as totalIncome'))->first();
+
+        return ['expectedIncome' => $expectedIncome,
+               'expectedIncomeSum' => $expectedIncomeSum,
+            ];
+    }
+
 }

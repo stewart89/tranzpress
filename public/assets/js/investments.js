@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
             toastr.success('Sikeres mentés');
             setTimeout(() => {
                 window.location.reload()
-            }, 2000);
+            }, 1500);
 
         }).catch(function (error) {
 
