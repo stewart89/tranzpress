@@ -85,4 +85,4 @@ php artisan migrate
 ```
 php artisan serve
 ```
-7. THe application url: http://127.0.0.1:8000/
+7. The application url: http://127.0.0.1:8000/
