@@ -22,15 +22,15 @@ class CreateInvestmentTypesTable extends Migration
 
         // Insert default values
         DB::table('investment_types')->insert([
-            ['name' => 'Állampapír'],
-            ['name' => 'Részvény'],
-            ['name' => 'Kötvény'],
-            ['name' => 'Valuta'],
-            ['name' => 'Deviza'],
-            ['name' => 'Ingatlan'],
-            ['name' => 'Kriptotőzsde'],
-            ['name' => 'Egyéb'],
-        ]
+                ['name' => 'Állampapír'],
+                ['name' => 'Részvény'],
+                ['name' => 'Kötvény'],
+                ['name' => 'Valuta'],
+                ['name' => 'Deviza'],
+                ['name' => 'Ingatlan'],
+                ['name' => 'Kriptotőzsde'],
+                ['name' => 'Egyéb'],
+            ]
         );
     }
 

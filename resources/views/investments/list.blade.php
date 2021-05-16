@@ -23,10 +23,10 @@
                     <td>{{$investment->transaction_date}}</td>
                     <td>{{$investment->amount}}</td>
                     <td>{{$investment->currency}}</td>
-                    <td>{{($investment->exchange_rate)? $investment->exchange_rate : '-'}}</td>
-                    <td>{{$investment->quantity}}</td>
-                    <td>{{$investment->anual_income}}</td>
-                    <td>{{$investment->term}}</td>
+                    <td>{{($investment->exchange_rate)? $investment->exchange_rate . ' Ft' : '-'}}</td>
+                    <td>{{$investment->quantity}} db.</td>
+                    <td>{{$investment->anual_income}} %</td>
+                    <td>{{$investment->term}} hó</td>
 
                     <td class="text-right">
 						<div class="btn-group table-actions">

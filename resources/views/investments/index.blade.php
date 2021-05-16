@@ -19,7 +19,7 @@
     </div>
 </header>
 
-<main class="page-content">
+<main class="page-content pb-5">
     <nav class="px-0 navbar navbar-expand-lg d-flex">
         <div class="px-5">
             <div class="input-group select-dropdown">

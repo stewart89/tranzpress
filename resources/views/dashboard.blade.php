@@ -15,7 +15,7 @@
     </div>
 </header>
 
-<main class="page-content">
+<main class="page-content pb-5">
     <div class="px-3 px-lg-5">
         <div class="card border-top-0">
             <h4 class="text-dark p-3">Összegzés:</h2>

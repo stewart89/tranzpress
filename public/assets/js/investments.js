@@ -36,9 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             document.getElementById('investments-list').innerHTML = response.data;
             addeventForActionMenu();
-            initToolTips();
             if(response.data.indexOf('<td') === -1){
-                toastr.info(__lang.client.notFound);
+                toastr.info('Nincs találat');
             }
         }).catch(function (error) {
             console.log(error);
@@ -77,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             toastr.success('Sikeres mentés');
             setTimeout(() => {
                 window.location.reload()
-            }, 1500);
+            }, 1000);
 
         }).catch(function (error) {
 
@@ -96,13 +95,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function checkFieldIsNotEmpty(){
 
-        requiredFileds.forEach(field => {
-            console.log(field.id)
+        for(let key in requiredFileds){
+            const field = requiredFileds[key];
             if(document.getElementById(field.id).value == ''){
                 toastr.error(field.msg, 'Form validációs hiba');
                 return false;
             }
-        })
+        }
         return true;
     }
 
@@ -139,6 +138,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             document.getElementById('amount').value = investment.amount;
             document.getElementById('currency').value = investment.currency;
+
+            if(document.getElementById('currency').value !== 'HUF'){
+                document.getElementById('exchange-rate-div').style.display = 'block';
+            }
+
             document.getElementById('exchange-rate').value = investment.exchange_rate;
             document.getElementById('quantity').value = investment.quantity;
             document.getElementById('anual-income').value = investment.anual_income;
@@ -151,9 +155,10 @@ document.addEventListener('DOMContentLoaded', () => {
     /**
      * Ha bezárjuk az új hozzáadása modalt
      */
-    $("#addNewMasseurModal").on("hidden.bs.modal", function () {
+    $("#addInvestment").on("hidden.bs.modal", function () {
         __investmentId = false;
-        document.getElementById('addInvestment').innerHTML = 'Új befektetés'
+        document.getElementById('investment-modal-title').innerHTML = 'Új befektetés'
+        document.getElementById('exchange-rate-div').value = 'HUF';
         document.getElementById('name').value = '';
         document.getElementById('amount').value = '';
         document.getElementById('exchange-rate').value = '';

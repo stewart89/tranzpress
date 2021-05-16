@@ -60,3 +60,24 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+#Installation Guide
+
+ 1. Step: Clone the project to a specific folder
+
+```
+git clone https://github.com/stewart89/tranzpress.git
+```
+
+2. Go to the project folder
+3. Composer install ([Download Composer](https://getcomposer.org/download/))
+```
+composer install
+```
+
+4. Please set up the credentials for database in .env
+5. Run command (this will migrate the database):
+```
+php artisan migrate
+```
